@@ -1,0 +1,27 @@
+{
+  "name": "dailychart",
+  "version": "1.0.0",
+  "description": "Tiny SVG charting library to display daily graph of a stock market security",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kbychkov/dailychart.git"
+  },
+  "scripts": {
+    "start": "gulp"
+  },
+  "keywords": [
+    "chart",
+    "graph",
+    "svg"
+  ],
+  "author": "Konstantin Bychkov",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-uglify": "^3.0.0"
+  }
+}
