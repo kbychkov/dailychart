@@ -2,7 +2,7 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 
 class Dailychart {
   constructor(el, options) {
-    this.options = Object.assign({}, this.defaultOptions, options);
+    this.options = Dailychart.extend({}, this.defaultOptions, options);
 
     this.element = el;
     this.width = this.options.width || el.offsetWidth;
@@ -15,6 +15,16 @@ class Dailychart {
     this._normalize();
     this._translate();
     this._draw();
+  }
+
+  static extend(target, ...objects) {
+    for (let object of objects) {
+      for (let key in object) {
+        let val = object[key];
+        target[key] = val;
+      }
+    }
+    return target;
   }
 
   _normalize() {

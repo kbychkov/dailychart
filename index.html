@@ -79,25 +79,27 @@
   </div>
   <script src="dist/dailychart.min.js"></script>
   <script>
+    var i;
+
     var elems1 = document.querySelectorAll('.chart-default');
-    elems1.forEach(function (el) {
-      new Dailychart(el);
-    });
+    for (i = 0; i < elems1.length; i++) {
+      new Dailychart(elems1[i]);
+    }
 
     var elems2 = document.querySelectorAll('.chart-line');
-    elems2.forEach(function (el) {
-      new Dailychart(el, { lineWidth: 2 });
-    });
+    for (i = 0; i < elems2.length; i++) {
+      new Dailychart(elems2[i], { lineWidth: 2 });
+    }
 
     var elems3 = document.querySelectorAll('.chart-color');
-    elems3.forEach(function (el) {
-      new Dailychart(el, { lineWidth: 2, colorPositive: '#3d3d3d', colorNegative: '#3d3d3d' });
-    });
+    for (i = 0; i < elems3.length; i++) {
+      new Dailychart(elems3[i], { lineWidth: 2, colorPositive: '#3d3d3d', colorNegative: '#3d3d3d' });
+    }
 
     var elems4 = document.querySelectorAll('.chart-close');
-    elems4.forEach(function (el) {
-      new Dailychart(el, { lineWidth: 2, colorPositive: '#3d3d3d', colorNegative: '#3d3d3d', closeColor: '' });
-    });
+    for (i = 0; i < elems4.length; i++) {
+      new Dailychart(elems4[i], { lineWidth: 2, colorPositive: '#3d3d3d', colorNegative: '#3d3d3d', closeColor: '' });
+    }
   </script>
 </body>
 </html>
