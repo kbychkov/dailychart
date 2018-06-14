@@ -6,6 +6,7 @@ const rename = require('gulp-rename');
 gulp.task('js', () => {
   return gulp.src('src/dailychart.js')
     .pipe(babel())
+    .pipe(gulp.dest('dist'))
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('dist'));
