@@ -45,6 +45,8 @@ new Dailychart(el, [options]);
 - `lineWidth` - Line width of the graph (default: 1).
 - `colorPositive` - Color of the positive part of the graph (default: '#33AE45').
 - `colorNegative` - Color of the negative part of the graph (default: '#EB5757').
+- `fillPositive` - Fill color of the positive area (default: '').
+- `fillNegative` - Fill color of the negative area (default: '').
 - `closeWidth` - Width of the close line (default: 1).
 - `closeColor` - Color of the close line (default: '#e0e0e0').
 
@@ -53,3 +55,9 @@ new Dailychart(el, [options]);
 - `data-dailychart-values` - Comma delimited data points for the graph.
 - `data-dailychart-length` - Number of points in the trading session.
 - `data-dailychart-close` - Close value of previous trading session.
+
+## Changelog
+
+### 1.1.0
+
+- Added new options: `fillPositive`, `fillNegative`
