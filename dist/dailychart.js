@@ -233,4 +233,4 @@ Dailychart.prototype.defaultOptions = {
   closeColor: '#e0e0e0'
 };
 
-Dailychart.version = '1.1.0';
+Dailychart.version = '1.1.1';

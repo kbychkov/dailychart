@@ -2,6 +2,8 @@
 
 Dailychart.js is a tiny standalone SVG charting library to display daily graph of a stock market security.
 
+Demo available on [https://kbychkov.github.io/dailychart/](https://kbychkov.github.io/dailychart/)
+
 ## Installation
 
 Download the standalone Dailychart.js and include it like this:
