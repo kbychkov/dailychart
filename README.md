@@ -6,10 +6,22 @@ Demo available on [https://kbychkov.github.io/dailychart/](https://kbychkov.gith
 
 ## Installation
 
-Download the standalone Dailychart.js and include it like this:
+Download from NPM
+
+```bash
+npm install dailychart
+```
+
+Include the library
+
+```js
+var Dailychart = require('dailychart');
+```
+
+of include the file
 
 ```html
-<script scr='./path/to/dailychart.js'></script>
+<script src='./path/to/dailychart.js'></script>
 ```
 
 ## Usage
@@ -59,6 +71,10 @@ new Dailychart(el, [options]);
 - `data-dailychart-close` - Close value of previous trading session.
 
 ## Changelog
+
+### 1.2.0
+
+- Added UMD wrapper
 
 ### 1.1.0
 
