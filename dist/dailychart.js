@@ -87,7 +87,7 @@ var Dailychart = function () {
   }, {
     key: '_path',
     value: function _path() {
-      var inc = this.width / this.length;
+      var inc = this.width / (this.length - 1);
       var i = 0,
           d = [];
 

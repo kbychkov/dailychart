@@ -67,7 +67,7 @@ class Dailychart {
   }
 
   _path() {
-    const inc = this.width / this.length;
+    const inc = this.width / (this.length - 1);
     let i = 0, d = [];
 
     for (; i < this.values.length; i++) {
