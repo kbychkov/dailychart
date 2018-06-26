@@ -21,13 +21,34 @@ var Dailychart = function () {
 
     this.options = Dailychart.extend({}, this.defaultOptions, options);
 
-    this.element = el;
+    if (!el) {
+      throw 'Dailychart.js: el is not defined';
+    } else {
+      this.element = el;
+    }
+
     this.width = this.options.width || el.offsetWidth;
     this.height = this.options.height || el.offsetHeight;
 
-    this.values = el.getAttribute('data-dailychart-values').split(',').map(Number);
-    this.length = +el.getAttribute('data-dailychart-length');
-    this.previous = +el.getAttribute('data-dailychart-close');
+    if (!el.getAttribute('data-dailychart-values') || el.getAttribute('data-dailychart-values').length === 0) {
+      return; // nothing to draw
+    } else {
+      this.values = el.getAttribute('data-dailychart-values').split(',').map(Number);
+    }
+
+    if (this.values.length < 2) return; // at least two points needs to draw a line
+
+    if (!el.getAttribute('data-dailychart-length') || el.getAttribute('data-dailychart-length').length === 0) {
+      this.length = this.values.length;
+    } else {
+      this.length = +el.getAttribute('data-dailychart-length');
+    }
+
+    if (!el.getAttribute('data-dailychart-close') || el.getAttribute('data-dailychart-close').length === 0) {
+      this.previous = this.values[0];
+    } else {
+      this.previous = +el.getAttribute('data-dailychart-close');
+    }
 
     this._normalize();
     this._translate();
