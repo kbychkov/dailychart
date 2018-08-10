@@ -24,8 +24,8 @@
     "babel-preset-env": "^1.7.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
-    "gulp-rename": "^1.2.3",
-    "gulp-uglify": "^3.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.1",
     "gulp-umd": "^2.0.0"
   }
 }
