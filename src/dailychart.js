@@ -51,10 +51,11 @@ class Dailychart {
   _normalize() {
     const max = Math.max.apply(null, this.values.concat([this.previous]));
     const min = Math.min.apply(null, this.values.concat([this.previous]));
-    const k = (this.height - this.options.lineWidth * 2) / (max - min);
+    const k = max === min ? 0 : (this.height - this.options.lineWidth * 2) / (max - min);
+    const shift = k === 0 ? this.height / 2 : 0;
 
-    this.values = this.values.map(value => (value - min) * k + this.options.lineWidth);
-    this.previous = (this.previous - min) * k + this.options.lineWidth;
+    this.values = this.values.map(value => (value - min) * k + this.options.lineWidth + shift);
+    this.previous = (this.previous - min) * k + this.options.lineWidth + shift;
   }
 
   _translate() {
@@ -198,4 +199,4 @@ Dailychart.prototype.defaultOptions = {
   closeColor: '#e0e0e0'
 };
 
-Dailychart.version = '1.2.1';
+Dailychart.version = '1.2.2';

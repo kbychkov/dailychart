@@ -62,12 +62,13 @@ var Dailychart = function () {
 
       var max = Math.max.apply(null, this.values.concat([this.previous]));
       var min = Math.min.apply(null, this.values.concat([this.previous]));
-      var k = (this.height - this.options.lineWidth * 2) / (max - min);
+      var k = max === min ? 0 : (this.height - this.options.lineWidth * 2) / (max - min);
+      var shift = k === 0 ? this.height / 2 : 0;
 
       this.values = this.values.map(function (value) {
-        return (value - min) * k + _this.options.lineWidth;
+        return (value - min) * k + _this.options.lineWidth + shift;
       });
-      this.previous = (this.previous - min) * k + this.options.lineWidth;
+      this.previous = (this.previous - min) * k + this.options.lineWidth + shift;
     }
   }, {
     key: '_translate',
@@ -263,6 +264,6 @@ Dailychart.prototype.defaultOptions = {
   closeColor: '#e0e0e0'
 };
 
-Dailychart.version = '1.2.0';
+Dailychart.version = '1.2.2';
 return Dailychart;
 }));
