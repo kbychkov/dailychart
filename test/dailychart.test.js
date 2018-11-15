@@ -12,8 +12,8 @@ describe('dailychart.js', function () {
 
   it('should initialize the empty chart without errors', function () {
     try {
-      var container = document.getElementById('chart_1');
-      new Dailychart(container);
+      var element = document.createElement('div');
+      new Dailychart(element);
     } catch (e) {
       expect(e).to.be.false;
     }
