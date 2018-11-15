@@ -9,4 +9,13 @@ describe('dailychart.js', function () {
       expect(e.message).to.be.equal('Dailychart.js: el is not defined');
     }
   });
+
+  it('should initialize the empty chart without errors', function () {
+    try {
+      var container = document.getElementById('chart_1');
+      new Dailychart(container);
+    } catch (e) {
+      expect(e).to.be.false;
+    }
+  });
 });
