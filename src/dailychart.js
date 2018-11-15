@@ -5,7 +5,7 @@ class Dailychart {
     this.options = Dailychart.extend({}, this.defaultOptions, options);
 
     if (!el) {
-      throw 'Dailychart.js: el is not defined';
+      throw new Error('Dailychart.js: el is not defined');
     } else {
       this.element = el;
     }
