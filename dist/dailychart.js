@@ -263,7 +263,5 @@ Dailychart.prototype.defaultOptions = {
   closeWidth: 1,
   closeColor: '#e0e0e0'
 };
-
-Dailychart.version = '1.2.2';
 return Dailychart;
 }));
