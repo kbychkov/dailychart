@@ -48,6 +48,15 @@ class Dailychart {
     return target;
   }
 
+  shift() {
+    const min = Math.min.apply(null, this.values.concat([this.previous]));
+
+    this.values = this.values.map(value => value - min);
+    this.previous = this.previous - min;
+
+    return this;
+  }
+
   _normalize() {
     const max = Math.max.apply(null, this.values.concat([this.previous]));
     const min = Math.min.apply(null, this.values.concat([this.previous]));

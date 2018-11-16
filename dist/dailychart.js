@@ -56,6 +56,18 @@ var Dailychart = function () {
   }
 
   _createClass(Dailychart, [{
+    key: 'shift',
+    value: function shift() {
+      var min = Math.min.apply(null, this.values.concat([this.previous]));
+
+      this.values = this.values.map(function (value) {
+        return value - min;
+      });
+      this.previous = this.previous - min;
+
+      return this;
+    }
+  }, {
     key: '_normalize',
     value: function _normalize() {
       var _this = this;
