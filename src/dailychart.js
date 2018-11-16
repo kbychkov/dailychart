@@ -77,6 +77,19 @@ class Dailychart {
     return Math.random().toString(36).substr(2, 9);
   }
 
+  path() {
+    const inc = this.width / (this.length - 1);
+    const d = [];
+
+    for (let i = 0; i < this.values.length; i++) {
+      d.push(i === 0 ? 'M' : 'L');
+      d.push(i * inc);
+      d.push(this.values[i]);
+    }
+
+    return d.join(' ');
+  }
+
   _path() {
     const inc = this.width / (this.length - 1);
     let i = 0, d = [];
