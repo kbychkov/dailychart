@@ -57,4 +57,20 @@ describe('dailychart.js', function () {
       expect(mock.previous).to.be.equal(2);
     });
   });
+
+  describe('#normalize', function () {
+    const Mock = function (values, previous) {
+      this.values = values;
+      this.previous = previous;
+      this.normalize = Dailychart.prototype.normalize;
+      return this;
+    };
+
+    it('normalizes values to unit', function () {
+      const mock = new Mock([1, 2, 4, 5, 3, 1, 0, 0, 1, 4], 2).normalize();
+
+      expect(mock.values).to.deep.equal([1/5, 2/5, 4/5, 1, 3/5, 1/5, 0, 0, 1/5, 4/5]);
+      expect(mock.previous).to.be.equal(2/5);
+    });
+  });
 });

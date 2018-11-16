@@ -57,6 +57,15 @@ class Dailychart {
     return this;
   }
 
+  normalize() {
+    const max = Math.max.apply(null, this.values.concat([this.previous]));
+
+    this.values = this.values.map(value => value / max);
+    this.previous = this.previous / max;
+
+    return this;
+  }
+
   _normalize() {
     const max = Math.max.apply(null, this.values.concat([this.previous]));
     const min = Math.min.apply(null, this.values.concat([this.previous]));
