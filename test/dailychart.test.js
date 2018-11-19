@@ -37,6 +37,22 @@ describe('dailychart.js', function () {
     });
   });
 
+  describe('#translate', function () {
+    const Mock = function (values, previous) {
+      this.values = values;
+      this.previous = previous;
+      this.height = 40;
+      this.translate = Dailychart.prototype.translate;
+      return this;
+    };
+
+    it('translates values to SVG coords', function () {
+      const mock = new Mock([1, 2, 4, 5, 3, 1, 0, 0, 1, 4], 2).translate();
+
+      expect(mock.values).to.deep.equal([32, 24, 8, 0, 16, 32, 40, 40, 32, 8]);
+      expect(mock.previous).to.be.equal(24);
+    });  });
+
   describe('#path', function () {
     const Mock = function (values) {
       this.values = values;

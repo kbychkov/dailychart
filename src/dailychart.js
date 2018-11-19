@@ -68,6 +68,16 @@ class Dailychart {
     this.previous = (this.previous - min) * k + this.options.lineWidth + shift;
   }
 
+  translate() {
+    const max = Math.max.apply(null, this.values.concat([this.previous]));
+    const k = this.height / max;
+
+    this.values = this.values.map(value => this.height - value * k);
+    this.previous = this.height - this.previous * k;
+
+    return this;
+  }
+
   _translate() {
     this.values = this.values.map(value => this.height - value);
     this.previous = this.height - this.previous;
