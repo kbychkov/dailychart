@@ -103,16 +103,6 @@ class Dailychart {
     return d.join(' ');
   }
 
-  _close(path, flag) {
-    if (flag === 'positive') {
-      path += ` V ${this.height} H 0 Z`;
-    }
-    if (flag === 'negative') {
-      path += ` V 0 H 0 Z`;
-    }
-    return path;
-  }
-
   _draw() {
     const { lineWidth, colorPositive, colorNegative, fillPositive, fillNegative } = this.options;
 
@@ -121,8 +111,8 @@ class Dailychart {
     const idNegative = `dailychart-${id}-negative`;
 
     const d = this._path();
-    const dPositive = this._close(d, 'positive');
-    const dNegative = this._close(d, 'negative');
+    const dPositive = `${d} V ${this.height} H 0 Z`;
+    const dNegative = `${d} V 0 H 0 Z`;
 
     const svg = this._svgElement();
     const linePrevious = this._lineElement(this.previous);
