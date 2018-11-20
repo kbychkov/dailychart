@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/dailychart.svg)](https://www.npmjs.com/package/dailychart)
+
 # Dailychart.js
 
 Dailychart.js is a tiny standalone SVG charting library to display daily graph of a stock market security.
