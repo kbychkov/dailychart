@@ -50,61 +50,49 @@ var Dailychart = function () {
       this.previous = +el.getAttribute('data-dailychart-close');
     }
 
-    this._normalize();
-    this._translate();
-    this._draw();
+    this.normalize().translate().draw();
   }
 
   _createClass(Dailychart, [{
-    key: 'shift',
-    value: function shift() {
+    key: 'normalize',
+    value: function normalize() {
       var min = Math.min.apply(null, this.values.concat([this.previous]));
+      var max = Math.max.apply(null, this.values.concat([this.previous]));
 
       this.values = this.values.map(function (value) {
-        return value - min;
+        return (value - min) / (max - min);
       });
-      this.previous = this.previous - min;
+      this.previous = (this.previous - min) / (max - min);
 
       return this;
     }
   }, {
-    key: '_normalize',
-    value: function _normalize() {
+    key: 'translate',
+    value: function translate() {
       var _this = this;
 
       var max = Math.max.apply(null, this.values.concat([this.previous]));
-      var min = Math.min.apply(null, this.values.concat([this.previous]));
-      var k = max === min ? 0 : (this.height - this.options.lineWidth * 2) / (max - min);
-      var shift = k === 0 ? this.height / 2 : 0;
+      var k = this.height / max;
 
       this.values = this.values.map(function (value) {
-        return (value - min) * k + _this.options.lineWidth + shift;
+        return _this.height - value * k;
       });
-      this.previous = (this.previous - min) * k + this.options.lineWidth + shift;
-    }
-  }, {
-    key: '_translate',
-    value: function _translate() {
-      var _this2 = this;
+      this.previous = this.height - this.previous * k;
 
-      this.values = this.values.map(function (value) {
-        return _this2.height - value;
-      });
-      this.previous = this.height - this.previous;
+      return this;
     }
   }, {
-    key: '_id',
-    value: function _id() {
+    key: 'id',
+    value: function id() {
       return Math.random().toString(36).substr(2, 9);
     }
   }, {
-    key: '_path',
-    value: function _path() {
+    key: 'path',
+    value: function path() {
       var inc = this.width / (this.length - 1);
-      var i = 0,
-          d = [];
+      var d = [];
 
-      for (; i < this.values.length; i++) {
+      for (var i = 0; i < this.values.length; i++) {
         d.push(i === 0 ? 'M' : 'L');
         d.push(i * inc);
         d.push(this.values[i]);
@@ -113,19 +101,8 @@ var Dailychart = function () {
       return d.join(' ');
     }
   }, {
-    key: '_close',
-    value: function _close(path, flag) {
-      if (flag === 'positive') {
-        path += ' V ' + this.height + ' H 0 Z';
-      }
-      if (flag === 'negative') {
-        path += ' V 0 H 0 Z';
-      }
-      return path;
-    }
-  }, {
-    key: '_draw',
-    value: function _draw() {
+    key: 'draw',
+    value: function draw() {
       var _options = this.options,
           lineWidth = _options.lineWidth,
           colorPositive = _options.colorPositive,
@@ -134,26 +111,26 @@ var Dailychart = function () {
           fillNegative = _options.fillNegative;
 
 
-      var id = this._id();
+      var id = this.id();
       var idPositive = 'dailychart-' + id + '-positive';
       var idNegative = 'dailychart-' + id + '-negative';
 
-      var d = this._path();
-      var dPositive = this._close(d, 'positive');
-      var dNegative = this._close(d, 'negative');
+      var d = this.path();
+      var dPositive = d + ' V ' + this.height + ' H 0 Z';
+      var dNegative = d + ' V 0 H 0 Z';
 
-      var svg = this._svgElement();
-      var linePrevious = this._lineElement(this.previous);
+      var svg = this.svgElement();
+      var linePrevious = this.lineElement(this.previous);
 
-      var pathPositive = this._pathElement(d, lineWidth, colorPositive, '', idPositive);
-      var areaPositive = this._pathElement(dPositive, 0, '', fillPositive, idPositive);
-      var clipPositive = this._clipElement(idPositive);
-      var rectPositive = this._rectElement(0, 0, this.width, this.previous);
+      var pathPositive = this.pathElement(d, lineWidth, colorPositive, '', idPositive);
+      var areaPositive = this.pathElement(dPositive, 0, '', fillPositive, idPositive);
+      var clipPositive = this.clipElement(idPositive);
+      var rectPositive = this.rectElement(0, 0, this.width, this.previous);
 
-      var pathNegative = this._pathElement(d, lineWidth, colorNegative, '', idNegative);
-      var areaNegative = this._pathElement(dNegative, 0, '', fillNegative, idNegative);
-      var clipNegative = this._clipElement(idNegative);
-      var rectNegative = this._rectElement(0, this.previous, this.width, this.height - this.previous);
+      var pathNegative = this.pathElement(d, lineWidth, colorNegative, '', idNegative);
+      var areaNegative = this.pathElement(dNegative, 0, '', fillNegative, idNegative);
+      var clipNegative = this.clipElement(idNegative);
+      var rectNegative = this.rectElement(0, this.previous, this.width, this.height - this.previous);
 
       clipPositive.appendChild(rectPositive);
       clipNegative.appendChild(rectNegative);
@@ -170,8 +147,8 @@ var Dailychart = function () {
       this.element.appendChild(svg);
     }
   }, {
-    key: '_svgElement',
-    value: function _svgElement() {
+    key: 'svgElement',
+    value: function svgElement() {
       var svg = document.createElementNS(SVG_NS, 'svg');
 
       svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', SVG_NS);
@@ -181,8 +158,8 @@ var Dailychart = function () {
       return svg;
     }
   }, {
-    key: '_lineElement',
-    value: function _lineElement(y) {
+    key: 'lineElement',
+    value: function lineElement(y) {
       var line = document.createElementNS(SVG_NS, 'line');
 
       line.setAttribute('x1', 0);
@@ -197,8 +174,8 @@ var Dailychart = function () {
       return line;
     }
   }, {
-    key: '_pathElement',
-    value: function _pathElement(d, width, stroke, fill, clipId) {
+    key: 'pathElement',
+    value: function pathElement(d, width, stroke, fill, clipId) {
       var path = document.createElementNS(SVG_NS, 'path');
 
       path.setAttribute('d', d);
@@ -211,8 +188,8 @@ var Dailychart = function () {
       return path;
     }
   }, {
-    key: '_rectElement',
-    value: function _rectElement(x, y, w, h) {
+    key: 'rectElement',
+    value: function rectElement(x, y, w, h) {
       var rect = document.createElementNS(SVG_NS, 'rect');
 
       rect.setAttribute('x', x);
@@ -223,8 +200,8 @@ var Dailychart = function () {
       return rect;
     }
   }, {
-    key: '_clipElement',
-    value: function _clipElement(id) {
+    key: 'clipElement',
+    value: function clipElement(id) {
       var clip = document.createElementNS(SVG_NS, 'clipPath');
 
       clip.setAttribute('id', id);
