@@ -1,6 +1,6 @@
 {
   "name": "dailychart",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Tiny SVG charting library to display daily graph of a stock market security",
   "homepage": "https://github.com/kbychkov/dailychart",
   "main": "dist/dailychart.js",
