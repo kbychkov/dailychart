@@ -9,7 +9,8 @@
     "url": "https://github.com/kbychkov/dailychart.git"
   },
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "build": "gulp js"
   },
   "keywords": [
     "chart",

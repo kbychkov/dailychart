@@ -15,7 +15,7 @@ gulp.task('js', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch('src/*.js', ['js']);
+  gulp.watch('src/*.js', gulp.parallel('js'));
 });
 
-gulp.task('default', ['js', 'watch']);
+gulp.task('default', gulp.series('js', 'watch'));
