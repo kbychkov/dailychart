@@ -11,13 +11,11 @@ describe('dailychart.js', function () {
       }
     });
 
-    it('should initialize the empty chart without errors', function () {
-      try {
-        var element = document.createElement('div');
-        new Dailychart(element);
-      } catch (e) {
-        expect(e).to.be.false;
-      }
+    it('do nothing when no values passed', function () {
+      var element = document.createElement('div');
+      new Dailychart(element);
+
+      expect(element.firstElementChild).to.be.null;
     });
 
     it('should initialize the chart with values', function () {
