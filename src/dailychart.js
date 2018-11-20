@@ -33,8 +33,7 @@ class Dailychart {
       this.previous = +el.getAttribute('data-dailychart-close');
     }
 
-    this.normalize().translate();
-    this._draw();
+    this.normalize().translate().draw();
   }
 
   static extend(target, ...objects) {
@@ -67,7 +66,7 @@ class Dailychart {
     return this;
   }
 
-  _id() {
+  id() {
     return Math.random().toString(36).substr(2, 9);
   }
 
@@ -84,42 +83,29 @@ class Dailychart {
     return d.join(' ');
   }
 
-  _path() {
-    const inc = this.width / (this.length - 1);
-    let i = 0, d = [];
-
-    for (; i < this.values.length; i++) {
-      d.push(i === 0 ? 'M' : 'L');
-      d.push(i * inc);
-      d.push(this.values[i]);
-    }
-
-    return d.join(' ');
-  }
-
-  _draw() {
+  draw() {
     const { lineWidth, colorPositive, colorNegative, fillPositive, fillNegative } = this.options;
 
-    const id = this._id();
+    const id = this.id();
     const idPositive = `dailychart-${id}-positive`;
     const idNegative = `dailychart-${id}-negative`;
 
-    const d = this._path();
+    const d = this.path();
     const dPositive = `${d} V ${this.height} H 0 Z`;
     const dNegative = `${d} V 0 H 0 Z`;
 
-    const svg = this._svgElement();
-    const linePrevious = this._lineElement(this.previous);
+    const svg = this.svgElement();
+    const linePrevious = this.lineElement(this.previous);
 
-    const pathPositive = this._pathElement(d, lineWidth, colorPositive, '', idPositive);
-    const areaPositive = this._pathElement(dPositive, 0, '', fillPositive, idPositive);
-    const clipPositive = this._clipElement(idPositive);
-    const rectPositive = this._rectElement(0, 0, this.width, this.previous);
+    const pathPositive = this.pathElement(d, lineWidth, colorPositive, '', idPositive);
+    const areaPositive = this.pathElement(dPositive, 0, '', fillPositive, idPositive);
+    const clipPositive = this.clipElement(idPositive);
+    const rectPositive = this.rectElement(0, 0, this.width, this.previous);
 
-    const pathNegative = this._pathElement(d, lineWidth, colorNegative, '', idNegative);
-    const areaNegative = this._pathElement(dNegative, 0, '', fillNegative, idNegative);
-    const clipNegative = this._clipElement(idNegative);
-    const rectNegative = this._rectElement(0, this.previous, this.width, this.height - this.previous);
+    const pathNegative = this.pathElement(d, lineWidth, colorNegative, '', idNegative);
+    const areaNegative = this.pathElement(dNegative, 0, '', fillNegative, idNegative);
+    const clipNegative = this.clipElement(idNegative);
+    const rectNegative = this.rectElement(0, this.previous, this.width, this.height - this.previous);
 
     clipPositive.appendChild(rectPositive);
     clipNegative.appendChild(rectNegative);
@@ -136,7 +122,7 @@ class Dailychart {
     this.element.appendChild(svg);
   }
 
-  _svgElement() {
+  svgElement() {
     const svg = document.createElementNS(SVG_NS, 'svg');
 
     svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', SVG_NS);
@@ -146,7 +132,7 @@ class Dailychart {
     return svg;
   }
 
-  _lineElement(y) {
+  lineElement(y) {
     const line = document.createElementNS(SVG_NS, 'line');
 
     line.setAttribute('x1', 0);
@@ -161,7 +147,7 @@ class Dailychart {
     return line;
   }
 
-  _pathElement(d, width, stroke, fill, clipId) {
+  pathElement(d, width, stroke, fill, clipId) {
     const path = document.createElementNS(SVG_NS, 'path');
 
     path.setAttribute('d', d);
@@ -174,7 +160,7 @@ class Dailychart {
     return path;
   }
 
-  _rectElement(x, y, w, h) {
+  rectElement(x, y, w, h) {
     const rect = document.createElementNS(SVG_NS, 'rect');
 
     rect.setAttribute('x', x);
@@ -185,7 +171,7 @@ class Dailychart {
     return rect;
   }
 
-  _clipElement(id) {
+  clipElement(id) {
     const clip = document.createElementNS(SVG_NS, 'clipPath');
 
     clip.setAttribute('id', id);
