@@ -19,6 +19,15 @@ describe('dailychart.js', function () {
         expect(e).to.be.false;
       }
     });
+
+    it('should initialize the chart with values', function () {
+      var element = document.createElement('div');
+      element.setAttribute('data-dailychart-values', '5,6,8,9,7,5,4,4,5,8');
+      new Dailychart(element);
+
+      const svg = element.firstElementChild;
+      expect(svg.tagName).to.be.equal('svg');
+    });
   });
 
   describe('#normalize', function () {
