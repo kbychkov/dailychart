@@ -1,4 +1,5 @@
 [![npm](https://img.shields.io/npm/v/dailychart.svg)](https://www.npmjs.com/package/dailychart)
+[![Travis (.org)](https://img.shields.io/travis/kbychkov/dailychart.svg)](https://travis-ci.org/kbychkov/dailychart)
 
 # Dailychart.js
 
