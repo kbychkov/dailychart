@@ -10,27 +10,31 @@ Dailychart.js is a tiny standalone SVG charting library to display daily graph o
 
 ## Installation
 
-Download from NPM
+The simplest way is to include the library file from CDN:
 
-```bash
-npm install dailychart
+```html
+<script src='https://unpkg.com/dailychart/dist/dailychart.min.js'></script>
 ```
 
-Include the library
+It's also possible to install the package as a dependency from NPM
+
+```bash
+npm install dailychart --save
+```
+
+then include the library into your project:
 
 ```js
 var Dailychart = require('dailychart');
 ```
 
-of include the file
-
-```html
-<script src='./path/to/dailychart.js'></script>
-```
-
 ## Usage
 
-### HTML
+First, create a container for the chart and fill with data using attributes.
+
+- `data-dailychart-values` (required) - comma-separated values for the chart.
+- `data-dailychart-close` - the value splits the chart on two areas (positive, negative) with its own colors.
+- `data-dailychart-length` - the total number of data points. Used to scale the chart along the horizontal axis. If `data-dailychart-values` has fewer points the remaining space will be empty. On the other hand, if `data-dailychart-length` isn't defined the chart will fit the container.
 
 ```html
 <div id="chart"
@@ -40,7 +44,7 @@ of include the file
 </div>
 ```
 
-### CSS
+Optionally apply CSS to the container.
 
 ```css
 #chart {
@@ -49,14 +53,16 @@ of include the file
 }
 ```
 
-### JavaScript
+Finally, create the chart with the script:
 
 ```js
 var el = document.getElementById('chart');
-new Dailychart(el, [options]);
+var chart = new Dailychart(el, { lineWidth: 2 });
 ```
 
-## Options
+## Configuration
+
+The second parameter of the constructor is an object that contains the number of options to control the appearance of the chart.
 
 - `width` - Chart width. If not set it equals to container's width.
 - `height` - Chart height. If not set it equals to container's height.
@@ -67,9 +73,7 @@ new Dailychart(el, [options]);
 - `fillNegative` - Fill color of the negative area (default: '').
 - `closeWidth` - Width of the close line (default: 1).
 - `closeColor` - Color of the close line (default: '#e0e0e0').
+ 
+ ## License
 
-## HTML Attributes
-
-- `data-dailychart-values` - Comma delimited data points for the graph.
-- `data-dailychart-length` - Number of points in the trading session.
-- `data-dailychart-close` - Close value of previous trading session.
+ Dailychart.js is available under the [MIT License](https://github.com/kbychkov/dailychart/blob/master/LICENSE).
