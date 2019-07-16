@@ -27,9 +27,9 @@
   "author": "Konstantin Bychkov",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-es2015-for-of": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-for-of": "^7.4.4",
+    "@babel/preset-env": "^7.5.4",
     "chai": "^4.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",

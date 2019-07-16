@@ -1,6 +1,6 @@
 {
-  "presets": ["env"],
+  "presets": ["@babel/preset-env"],
   "plugins": [
-    ["transform-es2015-for-of", { "loose": true }]
+    ["@babel/transform-for-of", { "loose": true }]
   ]
 }
