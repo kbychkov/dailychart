@@ -1,9 +1,14 @@
 {
   "name": "dailychart",
   "version": "1.2.3",
-  "description": "Tiny SVG charting library to display daily graph of a stock market security",
+  "description": "Tiny SVG charting library to display stock sparklines",
   "homepage": "https://github.com/kbychkov/dailychart",
   "main": "dist/dailychart.js",
+  "jsdelivr": "dist/dailychart.min.js",
+  "unpkg": "dist/dailychart.min.js",
+  "files": [
+    "/dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kbychkov/dailychart.git"
@@ -16,6 +21,7 @@
   "keywords": [
     "chart",
     "graph",
+    "sparkline",
     "svg"
   ],
   "author": "Konstantin Bychkov",
