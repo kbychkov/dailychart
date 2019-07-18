@@ -111,32 +111,32 @@
   </div>
   <script src="dist/dailychart.min.js"></script>
   <script>
-    new Dailychart(document.getElementById('chart-default'));
+    Dailychart.create('#chart-default');
 
-    new Dailychart(document.getElementById('chart-line'), {
+    Dailychart.create('#chart-line', {
       lineWidth: 2
     });
 
-    new Dailychart(document.getElementById('chart-color'), {
+    Dailychart.create('#chart-color', {
       lineWidth: 2,
       colorPositive: '#3d3d3d',
       colorNegative: '#3d3d3d'
     });
 
-    new Dailychart(document.getElementById('chart-close'), {
+    Dailychart.create('#chart-close', {
       lineWidth: 2,
       colorPositive: '#3d3d3d',
       colorNegative: '#3d3d3d',
       closeColor: ''
     });
 
-    new Dailychart(document.getElementById('chart-fill'), {
+    Dailychart.create('#chart-fill', {
       fillPositive: '#d6efda',
       fillNegative: '#fbdddd',
       closeColor: ''
     });
 
-    new Dailychart(document.getElementById('chart-intraday'), {
+    Dailychart.create('#chart-intraday', {
       fillPositive: '#d6efda',
       fillNegative: '#fbdddd'
     });

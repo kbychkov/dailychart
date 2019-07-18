@@ -36,6 +36,23 @@ class Dailychart {
     this.normalize().translate().draw();
   }
 
+  static create(ctx, options) {
+    if (typeof ctx === 'string') {
+      ctx = document.querySelectorAll(ctx);
+      if (!ctx) return;
+    }
+
+    if (ctx instanceof HTMLElement) {
+      ctx = [ctx];
+    } else if (ctx instanceof NodeList || ctx instanceof HTMLCollection) {
+      ctx = Array.from(ctx);
+    } else {
+      throw new Error('Incorrect context was provided');
+    }
+
+    ctx.forEach(el => new Dailychart(el, options));
+  }
+
   static extend(target, ...objects) {
     for (let object of objects) {
       for (let key in object) {

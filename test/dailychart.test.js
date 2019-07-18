@@ -28,6 +28,46 @@ describe('dailychart.js', function () {
     });
   });
 
+  describe('#create', function () {
+    beforeEach(() => {
+      const div = document.createElement('div');
+      div.id = 'create'
+      document.body.append(div);
+    });
+
+    afterEach(() => {
+      const div = document.getElementById('create');
+      div.parentNode.removeChild(div);
+    });
+
+    it('should throw an error when incorrect context provided', function () {
+      try {
+        Dailychart.create({});
+      } catch (e) {
+        expect(e.message).to.be.equal('Incorrect context was provided');
+        return;
+      }
+
+      expect(true).to.be.false; // should not get here
+    });
+
+    it('should accept a HTMLElement as a context', function () {
+      Dailychart.create(document.querySelector('div'));
+    });
+
+    it('should accept a NodeList as a context', function () {
+      Dailychart.create(document.querySelectorAll('div'));
+    });
+
+    it('should accept a HTMLCollection as a context', function () {
+      Dailychart.create(document.getElementsByTagName('div'));
+    });
+
+    it('should accept a CSS selector string as a context', function () {
+      Dailychart.create('div');
+    });
+  });
+
   describe('#normalize', function () {
     const Mock = function (values, previous) {
       this.values = values;

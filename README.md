@@ -53,12 +53,13 @@ Optionally apply CSS to the container.
 }
 ```
 
-Finally, create the chart with the script:
+Finally, create the chart for the element.
 
 ```js
-var el = document.getElementById('chart');
-var chart = new Dailychart(el, { lineWidth: 2 });
+Dailychart.create('#chart', { lineWidth: 2 });
 ```
+
+The first parameter can be a HTML element, a list of HTML elements or a CSS selector string.
 
 ## Configuration
 
