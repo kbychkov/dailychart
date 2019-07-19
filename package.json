@@ -16,7 +16,8 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp js",
-    "test": "karma start"
+    "test": "karma start",
+    "prepack": "npm run build"
   },
   "keywords": [
     "chart",
