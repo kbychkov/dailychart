@@ -3,3 +3,5 @@ node_js:
   - "10"
 addons:
   chrome: stable
+script:
+  npm run build && npm test
