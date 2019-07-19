@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/kbychkov/dailychart/compare/v1.3.0...v1.3.1) (2019-07-19)
+
+
+### Bug Fixes
+
+* build package on publish ([6bfdaa4](https://github.com/kbychkov/dailychart/commit/6bfdaa4))
+
+
+
 ## [1.3.0](https://github.com/kbychkov/dailychart/compare/v1.2.3...v1.3.0) (2019-07-19)
 
 
