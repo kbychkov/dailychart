@@ -4,7 +4,6 @@
 [![Travis (.org)](https://img.shields.io/travis/kbychkov/dailychart.svg)](https://travis-ci.org/kbychkov/dailychart)
 [![Dependency Status](https://img.shields.io/david/kbychkov/dailychart.svg)](https://david-dm.org/kbychkov/dailychart)
 [![devDependency Status](https://img.shields.io/david/dev/kbychkov/dailychart.svg)](https://david-dm.org/kbychkov/dailychart?type=dev)
-[![Greenkeeper badge](https://badges.greenkeeper.io/kbychkov/dailychart.svg)](https://greenkeeper.io/)
 
 Dailychart.js is a tiny standalone SVG charting library to display daily graph of a stock market security. Try the [demo](https://kbychkov.github.io/dailychart/).
 
