@@ -4,23 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dailychart.js Demo</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600" rel="stylesheet">
   <style>
     html {
-      font-family: 'Open Sans', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+      font-size: 16px;
+      line-height: 1.5;
     }
     body {
-      margin: 40px;
+      margin: 32px;
     }
-    h1 {
-      font-size: 2rem;
+    h1, h2 {
+      margin-bottom: 16px;
+      padding-bottom: .3em;
+      border-bottom: 1px solid #eaecef;
       font-weight: 600;
     }
+    h1 {
+      font-size: 32px;
+    }
     h2 {
-      margin-top: 2em;
-      margin-bottom: 1em;
+      margin-top: 24px;
       font-size: 1.5rem;
-      font-weight: 400;
     }
     .page {
       max-width: 960px;
@@ -35,24 +39,22 @@
     .head-title {
       margin: 0;
     }
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 2em -20px;
+    .example {
+      margin-top: 3rem;
     }
     .fig {
       box-sizing: border-box;
       width: 250px;
-      padding: 20px;
-    }
-    .fig-title {
-      margin-top: 1em;
-      font-size: 14px;
-      font-style: italic;
     }
     .chart {
       height: 50px;
       background: #fff;
+    }
+    .code pre {
+      padding: 16px;
+      font-size: 16px;
+      background: #f6f8fa;
+      border-radius: 3px;
     }
     @media (max-width: 399px) {
       .head {
@@ -66,46 +68,87 @@
 </head>
 <body>
   <div class="page">
-    <div class="head">
-      <h1 class="head-title">
-        Dailychart.js
-      </h1>
-      <div class="head-social">
-        <a class="github-button" href="https://github.com/kbychkov/dailychart" data-show-count="true" aria-label="Star kbychkov/dailychart on GitHub">Star</a>
-      </div>
-    </div>
+    <h1>Dailychart.js</h1>
+    <p>
+      <a class="github-button" href="https://github.com/kbychkov/dailychart" data-show-count="true" aria-label="Star kbychkov/dailychart on GitHub">Star</a>
+    </p>
     <p>Tiny SVG charting library to display daily graph of a stock market security.</p>
 
     <h2>Examples</h2>
-    <div class="row">
+    <div class="example">
+      <p>Default settings:</p>
       <div class="fig">
         <div class="chart" id="chart-default" data-dailychart-values="1292.2,1292.0,1292.1,1291.8,1291.8,1292.1,1291.9,1291.6,1291.7,1291.7,1291.6,1291.8,1291.6,1291.7,1292.0,1291.6,1291.4,1291.2,1290.5,1290.5,1290.6,1290.5,1290.4,1289.8,1289.5,1290.0,1289.6,1289.7,1289.1,1288.8,1289,1289.2,1289.4,1289.7,1289.7,1289.6,1289.2,1290.1,1290.3,1290.5,1290.7,1292.3,1292.5,1291.7,1292.1,1292.1,1292.6,1292.7,1292.8,1292.7,1292.2,1291.7,1292.1,1292.1,1291.7,1291.2,1291.7,1291.9,1291.6,1292.1,1292.5,1293.6,1293.3,1293.8,1293.9,1293.5,1293.7,1293.6,1294.1,1295.0,1296.9,1297.0,1296.3,1296.5,1296.6,1296.6,1296.1,1296.4,1296.1,1296.5,1296.7,1296.0,1296.1,1296.7,1296.1,1296.1,1296.2,1296.0,1296.1,1295.9,1295.7,1296.0,1296.4" data-dailychart-close="1292.0" data-dailychart-length="93"></div>
-        <div class="fig-title">Fig. 1. Default settings</div>
       </div>
+      <div class="code">
+<pre>Dailychart.create('#chart-default');</pre>
+      </div>
+    </div>
 
+    <div class="example">
+      <p>Line width:</p>
       <div class="fig">
         <div class="chart" id="chart-line" data-dailychart-values="1292.2,1292.0,1292.1,1291.8,1291.8,1292.1,1291.9,1291.6,1291.7,1291.7,1291.6,1291.8,1291.6,1291.7,1292.0,1291.6,1291.4,1291.2,1290.5,1290.5,1290.6,1290.5,1290.4,1289.8,1289.5,1290.0,1289.6,1289.7,1289.1,1288.8,1289,1289.2,1289.4,1289.7,1289.7,1289.6,1289.2,1290.1,1290.3,1290.5,1290.7,1292.3,1292.5,1291.7,1292.1,1292.1,1292.6,1292.7,1292.8,1292.7,1292.2,1291.7,1292.1,1292.1,1291.7,1291.2,1291.7,1291.9,1291.6,1292.1,1292.5,1293.6,1293.3,1293.8,1293.9,1293.5,1293.7,1293.6,1294.1,1295.0,1296.9,1297.0,1296.3,1296.5,1296.6,1296.6,1296.1,1296.4,1296.1,1296.5,1296.7,1296.0,1296.1,1296.7,1296.1,1296.1,1296.2,1296.0,1296.1,1295.9,1295.7,1296.0,1296.4" data-dailychart-close="1292.0" data-dailychart-length="93"></div>
-        <div class="fig-title">Fig. 2. Line width</div>
       </div>
+      <div class="code">
+<pre>Dailychart.create('#chart-line', {
+  lineWidth: 2
+});</pre>
+      </div>
+    </div>
 
+    <div class="example">
+      <p>Line color:</p>
       <div class="fig">
         <div class="chart" id="chart-color" data-dailychart-values="1292.2,1292.0,1292.1,1291.8,1291.8,1292.1,1291.9,1291.6,1291.7,1291.7,1291.6,1291.8,1291.6,1291.7,1292.0,1291.6,1291.4,1291.2,1290.5,1290.5,1290.6,1290.5,1290.4,1289.8,1289.5,1290.0,1289.6,1289.7,1289.1,1288.8,1289,1289.2,1289.4,1289.7,1289.7,1289.6,1289.2,1290.1,1290.3,1290.5,1290.7,1292.3,1292.5,1291.7,1292.1,1292.1,1292.6,1292.7,1292.8,1292.7,1292.2,1291.7,1292.1,1292.1,1291.7,1291.2,1291.7,1291.9,1291.6,1292.1,1292.5,1293.6,1293.3,1293.8,1293.9,1293.5,1293.7,1293.6,1294.1,1295.0,1296.9,1297.0,1296.3,1296.5,1296.6,1296.6,1296.1,1296.4,1296.1,1296.5,1296.7,1296.0,1296.1,1296.7,1296.1,1296.1,1296.2,1296.0,1296.1,1295.9,1295.7,1296.0,1296.4" data-dailychart-close="1292.0" data-dailychart-length="93"></div>
-        <div class="fig-title">Fig. 3. Line color</div>
       </div>
+      <div class="code">
+<pre>Dailychart.create('#chart-color', {
+  lineWidth: 2,
+  colorPositive: '#3d3d3d',
+  colorNegative: '#3d3d3d'
+});</pre>
+      </div>
+    </div>
 
+    <div class="example">
+      <p>Transparent close line:</p>
       <div class="fig">
         <div class="chart" id="chart-close" data-dailychart-values="1292.2,1292.0,1292.1,1291.8,1291.8,1292.1,1291.9,1291.6,1291.7,1291.7,1291.6,1291.8,1291.6,1291.7,1292.0,1291.6,1291.4,1291.2,1290.5,1290.5,1290.6,1290.5,1290.4,1289.8,1289.5,1290.0,1289.6,1289.7,1289.1,1288.8,1289,1289.2,1289.4,1289.7,1289.7,1289.6,1289.2,1290.1,1290.3,1290.5,1290.7,1292.3,1292.5,1291.7,1292.1,1292.1,1292.6,1292.7,1292.8,1292.7,1292.2,1291.7,1292.1,1292.1,1291.7,1291.2,1291.7,1291.9,1291.6,1292.1,1292.5,1293.6,1293.3,1293.8,1293.9,1293.5,1293.7,1293.6,1294.1,1295.0,1296.9,1297.0,1296.3,1296.5,1296.6,1296.6,1296.1,1296.4,1296.1,1296.5,1296.7,1296.0,1296.1,1296.7,1296.1,1296.1,1296.2,1296.0,1296.1,1295.9,1295.7,1296.0,1296.4" data-dailychart-close="1292.0" data-dailychart-length="93"></div>
-        <div class="fig-title">Fig. 4. Transparent close line</div>
       </div>
+      <div class="code">
+<pre>Dailychart.create('#chart-fill', {
+  fillPositive: '#d6efda',
+  fillNegative: '#fbdddd',
+  closeColor: ''
+});</pre>
+      </div>
+    </div>
 
+    <div class="example">
+      <p>Fill color:</p>
       <div class="fig">
         <div class="chart" id="chart-fill" data-dailychart-values="1292.2,1292.0,1292.1,1291.8,1291.8,1292.1,1291.9,1291.6,1291.7,1291.7,1291.6,1291.8,1291.6,1291.7,1292.0,1291.6,1291.4,1291.2,1290.5,1290.5,1290.6,1290.5,1290.4,1289.8,1289.5,1290.0,1289.6,1289.7,1289.1,1288.8,1289,1289.2,1289.4,1289.7,1289.7,1289.6,1289.2,1290.1,1290.3,1290.5,1290.7,1292.3,1292.5,1291.7,1292.1,1292.1,1292.6,1292.7,1292.8,1292.7,1292.2,1291.7,1292.1,1292.1,1291.7,1291.2,1291.7,1291.9,1291.6,1292.1,1292.5,1293.6,1293.3,1293.8,1293.9,1293.5,1293.7,1293.6,1294.1,1295.0,1296.9,1297.0,1296.3,1296.5,1296.6,1296.6,1296.1,1296.4,1296.1,1296.5,1296.7,1296.0,1296.1,1296.7,1296.1,1296.1,1296.2,1296.0,1296.1,1295.9,1295.7,1296.0,1296.4" data-dailychart-close="1292.0" data-dailychart-length="93"></div>
-        <div class="fig-title">Fig. 5. Fill color</div>
       </div>
+      <div class="code">
+<pre>Dailychart.create('#chart-fill', {
+  fillPositive: '#d6efda',
+  fillNegative: '#fbdddd',
+  closeColor: ''
+});</pre>
+      </div>
+    </div>
 
+    <div class="example">
+      <p>Intraday chart:</p>
       <div class="fig">
         <div class="chart" id="chart-intraday" data-dailychart-values="1292.2,1292.0,1292.1,1291.8,1291.8,1292.1,1291.9,1291.6,1291.7,1291.7,1291.6,1291.8,1291.6,1291.7,1292.0,1291.6,1291.4,1291.2,1290.5,1290.5,1290.6,1290.5,1290.4,1289.8,1289.5,1290.0,1289.6,1289.7,1289.1,1288.8,1289,1289.2,1289.4,1289.7,1289.7,1289.6,1289.2,1290.1,1290.3,1290.5,1290.7,1292.3,1292.5,1291.7,1292.1,1292.1,1292.6,1292.7,1292.8,1292.7" data-dailychart-close="1292.0" data-dailychart-length="93"></div>
-        <div class="fig-title">Fig. 6. Intraday chart</div>
+      </div>
+      <div class="code">
+<pre>Dailychart.create('#chart-intraday', {
+  fillPositive: '#d6efda',
+  fillNegative: '#fbdddd'
+});</pre>
       </div>
     </div>
   </div>
