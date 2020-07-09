@@ -28,19 +28,19 @@
   "author": "Konstantin Bychkov",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-transform-for-of": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-for-of": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "chai": "^4.2.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-umd": "^2.0.0",
-    "karma": "^5.0.1",
+    "karma": "^5.1.0",
     "karma-chrome-launcher": "^3.1.0",
-    "karma-mocha": "^2.0.0",
+    "karma-mocha": "^2.0.1",
     "karma-spec-reporter": "0.0.32",
-    "mocha": "^7.1.1"
+    "mocha": "^8.0.1"
   }
 }
